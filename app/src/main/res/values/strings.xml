@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bazar</string>
+
+    <!-- bottom navigation item -->
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="cart">Cart</string>
+    <string name="profile">Profile</string>
+</resources>
