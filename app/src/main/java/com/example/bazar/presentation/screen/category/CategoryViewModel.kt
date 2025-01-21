@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.cachedIn
 import com.example.bazar.domain.usecase.book.CategoriesUseCases
 import com.example.bazar.presentation.screen.category.state.Category
 import com.example.bazar.presentation.screen.category.state.CategoryState
@@ -16,13 +15,13 @@ import com.example.bazar.util.Constant.TIMES
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoryViewModel @Inject constructor(
+class CategoryViewModel @Inject constructor (
     private val categoriesUseCases: CategoriesUseCases
 ) : ViewModel() {
     private val _categoryState = MutableStateFlow(CategoryState())
@@ -30,6 +29,7 @@ class CategoryViewModel @Inject constructor(
 
     init {
         getCategories(SUBJECTS)
+        getBooksByCategory("subject:Programming")
     }
 
     fun getCategories(type: String) {
@@ -105,18 +105,23 @@ class CategoryViewModel @Inject constructor(
         }
     }
 
-    val books = categoriesUseCases.getBooksByCategoryUseCase (
-        "England"
-    ).cachedIn(viewModelScope)
+    private var _subjectState = mutableStateOf(SubjectState())
+    val subjectState: State<SubjectState> = _subjectState
 
-//    private var _subjectState = mutableStateOf(SubjectState())
-//    val subjectState : State<SubjectState> = _subjectState
-//
-//    private fun getBooksByCategory(category: String) {
-//        viewModelScope.launch {
-//            categoriesUseCases.getBooksByCategoryUseCase(category).onEach {
-//                _subjectState.value = _subjectState.value.copy(subjects = it)
-//            }.collect { }
-//        }
-//    }
+    private fun getBooksByCategory(category: String) {
+        viewModelScope.launch {
+            categoriesUseCases.getBooksByCategoryUseCase(category)
+                .catch { e ->
+                    println("Error: ${e.message}")
+                }
+                .collect { books ->
+                    if (books.isEmpty()) {
+                        println("No books found for category: $category")
+                    } else {
+                        println("Books found for category: $category")
+                    }
+                    _subjectState.value = _subjectState.value.copy(subjects = books)
+                }
+        }
+    }
 }
