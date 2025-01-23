@@ -1,6 +1,6 @@
 package com.example.bazar.domain.usecase.book
 
-data class CategoriesUseCases (
+data class BooksUseCases (
     val getBooksByCategoryUseCase: GetBooksByCategoryUseCase,
-    val getBookByIdUseCase: GetBookByIdUseCase
+    val searchBooksUseCase: SearchBooksUseCase
 )

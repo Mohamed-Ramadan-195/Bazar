@@ -7,6 +7,7 @@ object Constant {
 
     // Api Data
     const val BASE_URL = "https://www.googleapis.com/"
+    const val API_KEY = "AIzaSyDUXLXTQzUMpvBvDd2T6Oyod3UHTH-xQo4"
 
     // Navigation
     const val APP_START_NAVIGATION = "appStartNavigation"

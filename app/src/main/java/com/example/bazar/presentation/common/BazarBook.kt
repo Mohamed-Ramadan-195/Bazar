@@ -49,7 +49,7 @@ fun BazarBookItem (
                 .error(R.drawable.error)
                 .build(),
             contentDescription = "cover",
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.FillWidth
         )
         BazarSpacerHeight(SmallSpace)
         Text (

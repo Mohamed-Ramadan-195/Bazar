@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bazar.domain.usecase.book.CategoriesUseCases
+import com.example.bazar.domain.usecase.book.BooksUseCases
 import com.example.bazar.presentation.screen.category.state.Category
 import com.example.bazar.presentation.screen.category.state.CategoryState
 import com.example.bazar.presentation.screen.category.state.SubjectState
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CategoryViewModel @Inject constructor (
-    private val categoriesUseCases: CategoriesUseCases
+    private val booksUseCases: BooksUseCases
 ) : ViewModel() {
     private val _categoryState = MutableStateFlow(CategoryState())
     val categoryState = _categoryState.asStateFlow()
@@ -74,7 +74,7 @@ class CategoryViewModel @Inject constructor (
 
     private fun getBooksByCategory(category: String) {
         viewModelScope.launch {
-            categoriesUseCases.getBooksByCategoryUseCase(category)
+            booksUseCases.getBooksByCategoryUseCase(category)
                 .catch { e ->
                     println("Error: ${e.message}")
                 }

@@ -19,7 +19,12 @@ class BazarRepositoryImpl (
         }
     }
 
-//    override fun getBookById(id: String): Item {
-//        return bazarApi.getBookById(id)
-//    }
+    override fun searchBooks(query: String): Flow<List<Item>> {
+        return flow {
+            val response = bazarApi.searchBooks(query)
+            emit(response.items)
+        }.catch {
+            emit(emptyList())
+        }
+    }
 }

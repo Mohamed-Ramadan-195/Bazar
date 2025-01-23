@@ -6,9 +6,9 @@ import com.example.bazar.data.remote.BazarApi
 import com.example.bazar.data.repository.BazarRepositoryImpl
 import com.example.bazar.domain.manager.LocalUserManager
 import com.example.bazar.domain.repository.BazarRepository
-import com.example.bazar.domain.usecase.book.CategoriesUseCases
-import com.example.bazar.domain.usecase.book.GetBookByIdUseCase
+import com.example.bazar.domain.usecase.book.BooksUseCases
 import com.example.bazar.domain.usecase.book.GetBooksByCategoryUseCase
+import com.example.bazar.domain.usecase.book.SearchBooksUseCase
 import com.example.bazar.domain.usecase.start.AppEntryUseCases
 import com.example.bazar.domain.usecase.start.ReadAppEntryUseCase
 import com.example.bazar.domain.usecase.start.SaveAppEntryUseCase
@@ -44,10 +44,10 @@ object AppModule {
     @Singleton
     fun provideBookCategoriesUseCases (
         bazarRepository: BazarRepository
-    ) : CategoriesUseCases {
-        return CategoriesUseCases (
+    ) : BooksUseCases {
+        return BooksUseCases (
             getBooksByCategoryUseCase = GetBooksByCategoryUseCase(bazarRepository),
-            getBookByIdUseCase = GetBookByIdUseCase(bazarRepository)
+            searchBooksUseCase = SearchBooksUseCase(bazarRepository)
         )
     }
 

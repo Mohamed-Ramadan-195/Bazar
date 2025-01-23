@@ -26,6 +26,7 @@ import com.example.bazar.presentation.screen.category.CategoryViewModel
 import com.example.bazar.presentation.screen.details.DetailsScreen
 import com.example.bazar.presentation.screen.home.HomeScreen
 import com.example.bazar.presentation.screen.search.SearchScreen
+import com.example.bazar.presentation.screen.search.SearchViewModel
 
 @Composable
 fun BazarNavigation () {
@@ -126,7 +127,13 @@ fun BazarNavigation () {
                 )
             }
             composable (route = Route.SearchScreen.route) {
-                SearchScreen()
+                val searchViewModel: SearchViewModel = hiltViewModel()
+                val searchState = searchViewModel.searchState.value
+                SearchScreen (
+                    searchState = searchState,
+                    searchEvent = searchViewModel::onEvent,
+                    navigateToDetails = { item -> navigateToDetails(navController, item) }
+                )
             }
             composable (route = Route.MyBookScreen.route) {
                 MyBookScreen()

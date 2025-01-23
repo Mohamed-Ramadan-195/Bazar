@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface BazarRepository {
     fun getBooksByCategory(category: String): Flow<List<Item>>
 
-    // fun getBookById(id: String): Item
+    fun searchBooks(query: String): Flow<List<Item>>
 }
