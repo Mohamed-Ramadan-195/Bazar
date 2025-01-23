@@ -4,21 +4,26 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.bazar.R
+import com.example.bazar.domain.model.Item
 import com.example.bazar.presentation.navigation.bottomnavigaion.BazarBottomNavigation
 import com.example.bazar.presentation.navigation.bottomnavigaion.BottomNavigationItem
 import com.example.bazar.presentation.screen.my_book.MyBookScreen
 import com.example.bazar.presentation.screen.category.CategoryScreen
+import com.example.bazar.presentation.screen.category.CategoryViewModel
+import com.example.bazar.presentation.screen.details.DetailsScreen
 import com.example.bazar.presentation.screen.home.HomeScreen
 import com.example.bazar.presentation.screen.search.SearchScreen
 
@@ -110,13 +115,30 @@ fun BazarNavigation () {
                 HomeScreen()
             }
             composable (route = Route.CategoryScreen.route) {
-                CategoryScreen()
+                val categoryViewModel: CategoryViewModel = hiltViewModel()
+                val categoryState by categoryViewModel.categoryState.collectAsState()
+                val subjectState by categoryViewModel.subjectState
+                CategoryScreen (
+                    categoryState = categoryState,
+                    onClickCategory = { category -> categoryViewModel.onCategoryClick(category) },
+                    books = subjectState.subjects,
+                    navigateToDetails = { item -> navigateToDetails(navController, item) }
+                )
             }
             composable (route = Route.SearchScreen.route) {
                 SearchScreen()
             }
             composable (route = Route.MyBookScreen.route) {
                 MyBookScreen()
+            }
+            composable(route = Route.DetailsScreen.route) {
+                navController.previousBackStackEntry?.savedStateHandle?.get<Item?>("item")
+                    ?.let { item ->
+                        DetailsScreen (
+                            item = item,
+                            navigateUp = { navController.navigateUp() }
+                        )
+                    }
             }
         }
     }
@@ -135,4 +157,12 @@ fun navigateToTap (
             launchSingleTop = true
         }
     }
+}
+
+private fun navigateToDetails (
+    navController: NavController,
+    item: Item
+) {
+    navController.currentBackStackEntry?.savedStateHandle?.set("item", item)
+    navController.navigate(route = Route.DetailsScreen.route)
 }

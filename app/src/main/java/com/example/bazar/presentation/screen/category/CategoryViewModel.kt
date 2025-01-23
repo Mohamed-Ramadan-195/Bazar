@@ -9,9 +9,6 @@ import com.example.bazar.domain.usecase.book.CategoriesUseCases
 import com.example.bazar.presentation.screen.category.state.Category
 import com.example.bazar.presentation.screen.category.state.CategoryState
 import com.example.bazar.presentation.screen.category.state.SubjectState
-import com.example.bazar.util.Constant.PLACES
-import com.example.bazar.util.Constant.SUBJECTS
-import com.example.bazar.util.Constant.TIMES
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,60 +25,26 @@ class CategoryViewModel @Inject constructor (
     val categoryState = _categoryState.asStateFlow()
 
     init {
-        getCategories(SUBJECTS)
-        getBooksByCategory("subject:Programming")
+        getCategories()
+        getBooksByCategory("subject:Science")
     }
 
-    fun getCategories(type: String) {
-        when (type) {
-            SUBJECTS -> {
-                _categoryState.update {
-                    it.copy(
-                        categories = listOf(
-                            Category("Gravitation", true),
-                            Category("Cosmology"),
-                            Category("Congresses"),
-                            Category("Astrophysics"),
-                            Category("Physics"),
-                            Category("History"),
-                            Category("Mathematics"),
-                            Category("Fiction")
-                        )
-                    )
-                }
-            }
-            PLACES -> {
-                _categoryState.update {
-                    it.copy(
-                        categories = listOf (
-                            Category("United States", true),
-                            Category("England"),
-                            Category("Germany"),
-                            Category("France"),
-                            Category("Africa"),
-                            Category("California"),
-                            Category("Poland"),
-                            Category("Haiti")
-                        )
-                    )
-                }
-            }
-            TIMES -> {
-                _categoryState.update {
-                    it.copy(
-                        categories = listOf (
-                            Category("18th century", true),
-                            Category("19th century"),
-                            Category("20th century"),
-                            Category("21st century"),
-                            Category("1950's"),
-                            Category("0-1066"),
-                            Category("Early works to 1800"),
-                            Category("The Future")
-                        )
-                    )
-                }
-            }
+    private fun getCategories() {
+        _categoryState.update {
+            it.copy(
+                categories = listOf(
+                    Category("Science", true),
+                    Category("Programming"),
+                    Category("Education"),
+                    Category("Language"),
+                    Category("Law"),
+                    Category("Business & Economics"),
+                    Category("High schools"),
+                    Category("Computer Security"),
+                    Category("History"),
+                    Category("Biography & Autobiography"),
+                )
+            )
         }
     }
 
@@ -103,6 +66,7 @@ class CategoryViewModel @Inject constructor (
                 }
             )
         }
+        getBooksByCategory("subject:${selectedCategory.category}")
     }
 
     private var _subjectState = mutableStateOf(SubjectState())

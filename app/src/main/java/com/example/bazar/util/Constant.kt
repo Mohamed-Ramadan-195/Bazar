@@ -19,9 +19,5 @@ object Constant {
     const val CATEGORY_SCREEN = "categoryScreen"
     const val SEARCH_SCREEN = "searchScreen"
     const val MY_BOOK_SCREEN = "myBookScreen"
-
-    // Categories Types
-    const val SUBJECTS = "subjects"
-    const val PLACES = "places"
-    const val TIMES = "times"
+    const val DETAILS_SCREEN = "detailsScreen"
 }

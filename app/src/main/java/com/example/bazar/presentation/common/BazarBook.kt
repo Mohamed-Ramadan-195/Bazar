@@ -1,37 +1,57 @@
 package com.example.bazar.presentation.common
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.bazar.R
-import com.example.bazar.data.remote.dto.Item
+import com.example.bazar.domain.model.Item
 import com.example.bazar.util.Dimen.ExtraSmallSpace
+import com.example.bazar.util.Dimen.MediumSpace
+import com.example.bazar.util.Dimen.SmallSpace
 
 @SuppressLint("ResourceAsColor")
 @Composable
 fun BazarBookItem (
-    item: Item
+    modifier: Modifier = Modifier,
+    item: Item,
+    onClick: (Item) -> Unit
 ) {
     Column (
-        modifier = Modifier.padding(ExtraSmallSpace),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onClick(item) },
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
-//        Image (
-//            painter = painterResource(item.),
-//            contentDescription = "book cover",
-//            modifier = Modifier.height(80.dp),
-//            contentScale = ContentScale.Crop
-//        )
-//        BazarSpacerHeight(ExtraSmallSpace)
+        AsyncImage (
+            modifier = modifier.size(150.dp),
+            model = ImageRequest.Builder(context = LocalContext.current)
+                .data(item.volumeInfo.imageLinks.smallThumbnail)
+                .crossfade(true)
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error)
+                .build(),
+            contentDescription = "cover",
+            contentScale = ContentScale.Crop
+        )
+        BazarSpacerHeight(SmallSpace)
         Text (
             modifier = Modifier.padding(horizontal = ExtraSmallSpace),
             text = item.volumeInfo.title,
@@ -40,11 +60,6 @@ fun BazarBookItem (
             fontWeight = FontWeight.Normal,
             color = Color(R.color.secondary_text)
         )
+        BazarSpacerHeight(MediumSpace)
     }
-}
-
-@Composable
-@Preview(showBackground = true)
-fun BazarBookItemPreview() {
-
 }

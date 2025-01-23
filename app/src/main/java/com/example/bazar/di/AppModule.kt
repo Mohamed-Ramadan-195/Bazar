@@ -1,13 +1,13 @@
 package com.example.bazar.di
 
 import android.app.Application
-import com.example.bazar.data.local.BazarDao
 import com.example.bazar.data.manager.LocalUserManagerImpl
 import com.example.bazar.data.remote.BazarApi
 import com.example.bazar.data.repository.BazarRepositoryImpl
 import com.example.bazar.domain.manager.LocalUserManager
 import com.example.bazar.domain.repository.BazarRepository
 import com.example.bazar.domain.usecase.book.CategoriesUseCases
+import com.example.bazar.domain.usecase.book.GetBookByIdUseCase
 import com.example.bazar.domain.usecase.book.GetBooksByCategoryUseCase
 import com.example.bazar.domain.usecase.start.AppEntryUseCases
 import com.example.bazar.domain.usecase.start.ReadAppEntryUseCase
@@ -46,7 +46,8 @@ object AppModule {
         bazarRepository: BazarRepository
     ) : CategoriesUseCases {
         return CategoriesUseCases (
-            getBooksByCategoryUseCase = GetBooksByCategoryUseCase(bazarRepository)
+            getBooksByCategoryUseCase = GetBooksByCategoryUseCase(bazarRepository),
+            getBookByIdUseCase = GetBookByIdUseCase(bazarRepository)
         )
     }
 

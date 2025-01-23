@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias (libs.plugins.hilt.application)
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -77,6 +78,8 @@ dependencies {
 
     // Coil ( load images )
     implementation(libs.coil.compose)
+    implementation(libs.coil3.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     // Datastore Preferences
     implementation(libs.androidx.datastore.preferences)
