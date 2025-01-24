@@ -1,4 +1,4 @@
-package com.example.bazar.domain.usecase.book
+package com.example.bazar.domain.usecase.book.remote
 
 import com.example.bazar.domain.model.Item
 import com.example.bazar.domain.repository.BazarRepository

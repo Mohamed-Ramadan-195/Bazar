@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bazar.domain.usecase.book.BooksUseCases
+import com.example.bazar.domain.usecase.book.base.BooksUseCases
 import com.example.bazar.presentation.screen.category.state.Category
 import com.example.bazar.presentation.screen.category.state.CategoryState
 import com.example.bazar.presentation.screen.category.state.SubjectState

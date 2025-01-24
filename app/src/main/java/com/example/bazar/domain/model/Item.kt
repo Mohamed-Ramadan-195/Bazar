@@ -1,16 +1,19 @@
 package com.example.bazar.domain.model
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity
 data class Item (
-    val accessInfo: AccessInfo,
-    val etag: String,
-    @SerializedName("id") val id: String,
-    val kind: String,
-    val saleInfo: SaleInfo,
-    val selfLink: String,
-    @SerializedName("volumeInfo") val volumeInfo: VolumeInfo
+    @ColumnInfo val accessInfo: AccessInfo,
+    @ColumnInfo val etag: String,
+    @PrimaryKey val id: String,
+    @ColumnInfo val kind: String,
+    @ColumnInfo val saleInfo: SaleInfo,
+    @ColumnInfo val selfLink: String,
+    @ColumnInfo val volumeInfo: VolumeInfo
 ) : Parcelable

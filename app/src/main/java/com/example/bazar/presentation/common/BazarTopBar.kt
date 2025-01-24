@@ -18,6 +18,7 @@ import com.example.bazar.R
 @Composable
 fun BazarTopBar (
     title: String,
+    onBookmarkClick: () -> Unit,
     onBackClick: () -> Unit,
 ) {
     TopAppBar (
@@ -34,6 +35,16 @@ fun BazarTopBar (
                 Icon (
                     painter = painterResource(id = R.drawable.ic_arrow_back),
                     contentDescription = "back"
+                )
+            }
+        },
+        actions = {
+            IconButton (
+                onClick = onBookmarkClick
+            ) {
+                Icon (
+                    painter = painterResource(id = R.drawable.ic_book),
+                    contentDescription = "bookmark"
                 )
             }
         }

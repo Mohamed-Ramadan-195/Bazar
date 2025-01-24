@@ -7,4 +7,12 @@ interface BazarRepository {
     fun getBooksByCategory(category: String): Flow<List<Item>>
 
     fun searchBooks(query: String): Flow<List<Item>>
+
+    suspend fun insertBook(item: Item)
+
+    suspend fun deleteBook(item: Item)
+
+    fun getBooksBookmarked(): Flow<List<Item>>
+
+    suspend fun getBookDetails(id: String): Item
 }

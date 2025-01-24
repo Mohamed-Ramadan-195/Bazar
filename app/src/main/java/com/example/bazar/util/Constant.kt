@@ -5,9 +5,12 @@ object Constant {
     const val USER_SETTINGS = "user settings"
     const val APP_ENTRY = "app entry"
 
-    // Api Data
+    // Remote Data
     const val BASE_URL = "https://www.googleapis.com/"
     const val API_KEY = "AIzaSyDUXLXTQzUMpvBvDd2T6Oyod3UHTH-xQo4"
+
+    // Local Data
+    const val BAZAR_DATABASE_NAME = "bazarDatabase"
 
     // Navigation
     const val APP_START_NAVIGATION = "appStartNavigation"

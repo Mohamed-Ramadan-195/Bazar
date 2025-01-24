@@ -30,6 +30,7 @@ import com.example.bazar.util.Dimen.SmallSpace
 @Composable
 fun DetailsScreen (
     item: Item?,
+    detailsEvent: (DetailsEvent) -> Unit,
     navigateUp: () -> Unit
 ) {
     val context = LocalContext.current
@@ -42,7 +43,8 @@ fun DetailsScreen (
     ) {
         BazarTopBar (
             title = "Details",
-            onBackClick = navigateUp
+            onBackClick = navigateUp,
+            onBookmarkClick = { detailsEvent(DetailsEvent.OperationsBook(item!!)) }
         )
         AsyncImage (
             modifier = Modifier
