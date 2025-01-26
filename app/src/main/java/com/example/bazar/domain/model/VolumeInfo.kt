@@ -2,7 +2,6 @@ package com.example.bazar.domain.model
 
 import android.os.Parcelable
 import com.example.bazar.data.remote.dto.IndustryIdentifier
-import com.example.bazar.data.remote.dto.PanelizationSummary
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

@@ -15,6 +15,7 @@ import com.example.bazar.domain.usecase.book.local.GetBookDetailsUseCase
 import com.example.bazar.domain.usecase.book.local.GetBooksBookmarkedUseCase
 import com.example.bazar.domain.usecase.book.remote.GetBooksByCategoryUseCase
 import com.example.bazar.domain.usecase.book.local.InsertBookUseCase
+import com.example.bazar.domain.usecase.book.remote.GetBooksByTitleUseCase
 import com.example.bazar.domain.usecase.book.remote.SearchBooksUseCase
 import com.example.bazar.domain.usecase.start.AppEntryUseCases
 import com.example.bazar.domain.usecase.start.ReadAppEntryUseCase
@@ -59,7 +60,8 @@ object AppModule {
             insertBookUseCase = InsertBookUseCase(bazarRepository),
             deleteBookUseCase = DeleteBookUseCase(bazarRepository),
             getBooksBookmarkedUseCase = GetBooksBookmarkedUseCase(bazarRepository),
-            getBookDetailsUseCase = GetBookDetailsUseCase(bazarRepository)
+            getBookDetailsUseCase = GetBookDetailsUseCase(bazarRepository),
+            getBooksByTitleUseCase = GetBooksByTitleUseCase(bazarRepository)
         )
     }
 

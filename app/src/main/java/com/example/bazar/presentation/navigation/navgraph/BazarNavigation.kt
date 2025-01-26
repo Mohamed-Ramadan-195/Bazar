@@ -29,6 +29,7 @@ import com.example.bazar.presentation.screen.details.DetailsEvent
 import com.example.bazar.presentation.screen.details.DetailsScreen
 import com.example.bazar.presentation.screen.details.DetailsViewModel
 import com.example.bazar.presentation.screen.home.HomeScreen
+import com.example.bazar.presentation.screen.home.HomeViewModel
 import com.example.bazar.presentation.screen.my_book.MyBookViewModel
 import com.example.bazar.presentation.screen.search.SearchScreen
 import com.example.bazar.presentation.screen.search.SearchViewModel
@@ -118,7 +119,13 @@ fun BazarNavigation () {
             modifier = Modifier.padding(bottom = bottomPadding)
         ) {
             composable (route = Route.HomeScreen.route) {
-                HomeScreen()
+                val homeViewModel: HomeViewModel = hiltViewModel()
+                val state = homeViewModel.state.value
+                HomeScreen (
+                    subjectState = state,
+                    navigateToSearch = { navController.navigate(Route.SearchScreen.route) },
+                    navigateToDetails = { item -> navigateToDetails(navController, item) }
+                )
             }
             composable (route = Route.CategoryScreen.route) {
                 val categoryViewModel: CategoryViewModel = hiltViewModel()

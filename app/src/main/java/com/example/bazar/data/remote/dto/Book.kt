@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.example.bazar.domain.model.Item
 import kotlinx.parcelize.Parcelize
 
-data class BookCategory(
+data class Book(
     val items: List<Item>,
     val kind: String,
     val totalItems: Int
@@ -32,10 +32,4 @@ data class ListPriceX(
 data class IndustryIdentifier(
     val identifier: String,
     val type: String
-) : Parcelable
-
-@Parcelize
-data class PanelizationSummary(
-    val containsEpubBubbles: Boolean,
-    val containsImageBubbles: Boolean
 ) : Parcelable

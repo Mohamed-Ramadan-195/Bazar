@@ -26,22 +26,20 @@ class CategoryViewModel @Inject constructor (
 
     init {
         getCategories()
-        getBooksByCategory("subject:Science")
+        getBooksByCategory("subject:Programming")
     }
 
     private fun getCategories() {
         _categoryState.update {
             it.copy(
                 categories = listOf(
-                    Category("Science", true),
-                    Category("Programming"),
+                    Category("Programming", true),
                     Category("Education"),
                     Category("Language"),
                     Category("Law"),
                     Category("Business & Economics"),
                     Category("High schools"),
                     Category("Computer Security"),
-                    Category("History"),
                     Category("Biography & Autobiography"),
                 )
             )
@@ -55,7 +53,7 @@ class CategoryViewModel @Inject constructor (
                     if (it.category == selectedCategory.category) {
                         it.copy(
                             isSelected = true,
-                            textColor = Color.Red
+                            textColor = Color(0xFF54408C)
                         )
                     } else {
                         it.copy(
