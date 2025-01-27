@@ -19,7 +19,6 @@ object Constant {
 
     const val ON_BOARDING_SCREEN = "onBoardingScreen"
 
-    const val HOME_SCREEN = "homeScreen"
     const val CATEGORY_SCREEN = "categoryScreen"
     const val SEARCH_SCREEN = "searchScreen"
     const val MY_BOOK_SCREEN = "myBookScreen"

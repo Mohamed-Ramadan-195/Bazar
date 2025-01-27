@@ -30,8 +30,8 @@ fun CategoryScreen (
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .padding(all = MediumSpace)
             .statusBarsPadding()
+            .padding(all = MediumSpace)
     ) {
         BazarSpacerHeight(MediumSpace)
         BazarTextHeadline (text = "Category")
