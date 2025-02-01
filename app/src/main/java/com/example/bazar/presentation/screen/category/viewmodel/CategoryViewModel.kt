@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.category
+package com.example.bazar.presentation.screen.category.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

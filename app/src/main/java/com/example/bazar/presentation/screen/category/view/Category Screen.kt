@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.category
+package com.example.bazar.presentation.screen.category.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

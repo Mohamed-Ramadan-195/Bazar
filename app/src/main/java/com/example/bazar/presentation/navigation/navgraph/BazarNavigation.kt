@@ -23,8 +23,8 @@ import com.example.bazar.domain.model.Item
 import com.example.bazar.presentation.navigation.bottomnavigaion.BazarBottomNavigation
 import com.example.bazar.presentation.navigation.bottomnavigaion.BottomNavigationItem
 import com.example.bazar.presentation.screen.my_book.MyBookScreen
-import com.example.bazar.presentation.screen.category.CategoryScreen
-import com.example.bazar.presentation.screen.category.CategoryViewModel
+import com.example.bazar.presentation.screen.category.view.CategoryScreen
+import com.example.bazar.presentation.screen.category.viewmodel.CategoryViewModel
 import com.example.bazar.presentation.screen.details.DetailsEvent
 import com.example.bazar.presentation.screen.details.DetailsScreen
 import com.example.bazar.presentation.screen.details.DetailsViewModel
