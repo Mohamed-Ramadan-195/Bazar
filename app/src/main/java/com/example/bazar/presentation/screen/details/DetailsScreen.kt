@@ -30,7 +30,7 @@ import com.example.bazar.util.Dimen.SmallSpace
 
 @Composable
 fun DetailsScreen (
-    item: Item?,
+    item: Item,
     detailsEvent: (DetailsEvent) -> Unit,
     navigateUp: () -> Unit
 ) {
@@ -46,7 +46,7 @@ fun DetailsScreen (
         BazarTopBar (
             title = "Details",
             onBackClick = navigateUp,
-            onBookmarkClick = { detailsEvent(DetailsEvent.OperationsBook(item!!)) }
+            onBookmarkClick = { detailsEvent(DetailsEvent.OperationsBook(item)) }
         )
         AsyncImage (
             modifier = Modifier
@@ -55,7 +55,7 @@ fun DetailsScreen (
                 .padding(horizontal = MediumSpace)
                 .clip(MaterialTheme.shapes.medium),
             model = ImageRequest.Builder(context = context)
-                .data(item?.volumeInfo!!.imageLinks.smallThumbnail)
+                .data(item.volumeInfo.imageLinks.smallThumbnail)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 .build(),

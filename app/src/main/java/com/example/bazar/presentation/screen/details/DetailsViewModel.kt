@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.bazar.domain.model.Item
 import com.example.bazar.domain.usecase.book.base.BooksUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,7 +21,7 @@ class DetailsViewModel @Inject constructor(
     fun onEvent(detailsEvent: DetailsEvent) {
         when (detailsEvent) {
             is DetailsEvent.OperationsBook -> {
-                viewModelScope.launch(Dispatchers.IO) {
+                viewModelScope.launch {
                     val book = booksUseCases.getBookDetailsUseCase(detailsEvent.item.id)
                     if (book == null) {
                         insertBook(detailsEvent.item)

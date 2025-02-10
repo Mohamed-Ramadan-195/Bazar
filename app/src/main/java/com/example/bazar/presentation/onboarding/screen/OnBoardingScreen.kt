@@ -35,7 +35,7 @@ fun OnBoardingScreen (
         val buttonState = remember {
             derivedStateOf {
                 when (pagerState.currentPage) {
-                    0 -> listOf("Continue")
+                    0 -> listOf("Continue","")
                     1 -> listOf("Continue", "Back")
                     2 -> listOf("Get Started", "Back")
                     else -> listOf("","")
@@ -77,7 +77,7 @@ fun OnBoardingScreen (
                     }
                 )
                 BazarTextButton (
-                    text = buttonState.value[0],
+                    text = buttonState.value[1],
                     onClick = {
                         scope.launch {
                             pagerState.animateScrollToPage (

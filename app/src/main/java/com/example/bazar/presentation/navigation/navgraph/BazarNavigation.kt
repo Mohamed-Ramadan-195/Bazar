@@ -136,11 +136,7 @@ fun BazarNavigation () {
             composable(route = Route.DetailsScreen.route) {
                 val detailsViewModel: DetailsViewModel = hiltViewModel()
                 if (detailsViewModel.sideEffect != null) {
-                    Toast.makeText(
-                        LocalContext.current,
-                        detailsViewModel.sideEffect,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(LocalContext.current, detailsViewModel.sideEffect, Toast.LENGTH_SHORT).show()
                     detailsViewModel.onEvent(DetailsEvent.RemoveSideEffect)
                 }
                 navController.previousBackStackEntry?.savedStateHandle?.get<Item?>("item")

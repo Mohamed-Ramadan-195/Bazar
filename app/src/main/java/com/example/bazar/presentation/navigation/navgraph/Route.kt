@@ -12,10 +12,12 @@ import com.example.bazar.util.Constant.MY_BOOK_SCREEN
 sealed class Route (
     val route: String
 ) {
+    // Navigation
     data object AppStartNavigation: Route(route = APP_START_NAVIGATION)
     data object BazarNavigation: Route(route = BAZAR_NAVIGATION)
     data object BazarNavigator: Route(route = BAZAR_NAVIGATOR)
 
+    // Screen
     data object OnBoardingScreen: Route(route = ON_BOARDING_SCREEN)
     data object CategoryScreen: Route(route = CATEGORY_SCREEN)
     data object SearchScreen: Route(route = SEARCH_SCREEN)
