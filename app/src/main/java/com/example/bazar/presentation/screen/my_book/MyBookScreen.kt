@@ -12,6 +12,7 @@ import com.example.bazar.domain.model.Item
 import com.example.bazar.presentation.common.BazarBookItem
 import com.example.bazar.presentation.common.BazarSpacerHeight
 import com.example.bazar.presentation.common.BazarTextHeadline
+import com.example.bazar.presentation.common.EmptyScreen
 import com.example.bazar.util.Dimen.MediumSpace
 
 @Composable
@@ -25,6 +26,7 @@ fun MyBookScreen (
             .padding(MediumSpace)
             .statusBarsPadding()
     ) {
+        if (myBookState.books.isEmpty()) EmptyScreen()
         BazarSpacerHeight(MediumSpace)
         BazarTextHeadline("My Books")
         BazarSpacerHeight(MediumSpace)

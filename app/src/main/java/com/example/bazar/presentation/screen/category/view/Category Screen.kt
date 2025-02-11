@@ -16,6 +16,7 @@ import com.example.bazar.presentation.common.BazarBookItem
 import com.example.bazar.presentation.common.BazarCategoryItem
 import com.example.bazar.presentation.common.BazarSpacerHeight
 import com.example.bazar.presentation.common.BazarTextHeadline
+import com.example.bazar.presentation.common.EmptyScreen
 import com.example.bazar.presentation.screen.category.state.Category
 import com.example.bazar.presentation.screen.category.state.CategoryState
 import com.example.bazar.util.Dimen.MediumSpace
@@ -50,6 +51,7 @@ fun CategoryScreen (
             }
         }
         BazarSpacerHeight(MediumSpace)
+        if (books.isEmpty()) EmptyScreen()
         LazyVerticalGrid (
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxSize()

@@ -45,7 +45,7 @@ fun BazarBookItem (
             model = ImageRequest.Builder(context = LocalContext.current)
                 .data(item.volumeInfo.imageLinks.smallThumbnail)
                 .crossfade(true)
-                .placeholder(R.drawable.placeholder)
+                .placeholder(R.drawable.book)
                 .error(R.drawable.error)
                 .build(),
             contentDescription = "cover",
