@@ -51,14 +51,16 @@ class CategoryViewModel @Inject constructor (
             currentState.copy (
                 categories = currentState.categories.map {
                     if (it.category == selectedCategory.category) {
-                        it.copy(
+                        it.copy (
                             isSelected = true,
-                            textColor = Color(0xFF54408C)
+                            textColor = Color.White,
+                            boxColor = Color(0xFF54408C)
                         )
                     } else {
                         it.copy(
                             isSelected = false,
-                            textColor = Color.Gray
+                            textColor = Color.Gray,
+                            boxColor = Color.Transparent
                         )
                     }
                 }

@@ -1,7 +1,7 @@
 package com.example.bazar.data.repository
 
 import com.example.bazar.data.local.BazarDao
-import com.example.bazar.data.remote.BazarApi
+import com.example.bazar.data.remote.api.BazarApi
 import com.example.bazar.domain.model.Item
 import com.example.bazar.domain.repository.BazarRepository
 import kotlinx.coroutines.flow.Flow

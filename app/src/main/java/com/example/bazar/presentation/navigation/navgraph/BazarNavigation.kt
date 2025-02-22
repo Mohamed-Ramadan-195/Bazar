@@ -29,8 +29,8 @@ import com.example.bazar.presentation.screen.details.DetailsEvent
 import com.example.bazar.presentation.screen.details.DetailsScreen
 import com.example.bazar.presentation.screen.details.DetailsViewModel
 import com.example.bazar.presentation.screen.my_book.MyBookViewModel
-import com.example.bazar.presentation.screen.search.SearchScreen
-import com.example.bazar.presentation.screen.search.SearchViewModel
+import com.example.bazar.presentation.screen.search.view.SearchScreen
+import com.example.bazar.presentation.screen.search.viewmodel.SearchViewModel
 
 @Composable
 fun BazarNavigation () {

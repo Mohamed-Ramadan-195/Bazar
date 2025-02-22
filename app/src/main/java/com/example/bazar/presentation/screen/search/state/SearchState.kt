@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.search
+package com.example.bazar.presentation.screen.search.state
 
 import com.example.bazar.domain.model.Item
 

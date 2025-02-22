@@ -1,4 +1,4 @@
-package com.example.bazar.data.remote
+package com.example.bazar.data.remote.api
 
 import com.example.bazar.data.remote.dto.Book
 import com.example.bazar.util.Constant.API_KEY

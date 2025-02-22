@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.search
+package com.example.bazar.presentation.screen.search.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +12,8 @@ import com.example.bazar.domain.model.Item
 import com.example.bazar.presentation.common.BazarBookItem
 import com.example.bazar.presentation.common.BazarSearchBar
 import com.example.bazar.presentation.common.BazarSpacerHeight
+import com.example.bazar.presentation.screen.search.state.SearchEvent
+import com.example.bazar.presentation.screen.search.state.SearchState
 import com.example.bazar.util.Dimen.MediumSpace
 import com.example.bazar.util.Dimen.SmallSpace
 

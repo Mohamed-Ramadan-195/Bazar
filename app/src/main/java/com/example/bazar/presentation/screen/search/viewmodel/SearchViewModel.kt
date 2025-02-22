@@ -1,10 +1,12 @@
-package com.example.bazar.presentation.screen.search
+package com.example.bazar.presentation.screen.search.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bazar.domain.usecase.book.base.BooksUseCases
+import com.example.bazar.presentation.screen.search.state.SearchEvent
+import com.example.bazar.presentation.screen.search.state.SearchState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch

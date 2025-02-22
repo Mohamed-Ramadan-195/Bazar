@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.example.bazar.data.local.BazarDao
 import com.example.bazar.data.local.BazarDatabase
 import com.example.bazar.data.manager.LocalUserManagerImpl
-import com.example.bazar.data.remote.BazarApi
+import com.example.bazar.data.remote.api.BazarApi
 import com.example.bazar.data.repository.BazarRepositoryImpl
 import com.example.bazar.domain.manager.LocalUserManager
 import com.example.bazar.domain.repository.BazarRepository
