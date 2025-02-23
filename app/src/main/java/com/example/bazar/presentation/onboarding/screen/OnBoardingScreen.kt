@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bazar.presentation.common.BazarButton
-import com.example.bazar.presentation.common.BazarSpacerHeight
+import com.example.bazar.presentation.common.SpacerHeight
 import com.example.bazar.presentation.common.BazarTextButton
 import com.example.bazar.presentation.onboarding.components.OnBoardingPage
 import com.example.bazar.presentation.onboarding.components.OnBoardingPageIndicator
@@ -59,7 +59,7 @@ fun OnBoardingScreen (
                 pageCount = pages.size,
                 selectedPage = pagerState.currentPage
             )
-            BazarSpacerHeight(12.dp)
+            SpacerHeight(12.dp)
             val scope = rememberCoroutineScope()
             if (buttonState.value[0].isNotEmpty()) {
                 BazarButton (

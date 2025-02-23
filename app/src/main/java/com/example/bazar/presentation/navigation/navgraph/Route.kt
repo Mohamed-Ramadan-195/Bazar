@@ -6,6 +6,7 @@ import com.example.bazar.util.Constant.BAZAR_NAVIGATOR
 import com.example.bazar.util.Constant.SEARCH_SCREEN
 import com.example.bazar.util.Constant.CATEGORY_SCREEN
 import com.example.bazar.util.Constant.DETAILS_SCREEN
+import com.example.bazar.util.Constant.HOME_SCREEN
 import com.example.bazar.util.Constant.ON_BOARDING_SCREEN
 import com.example.bazar.util.Constant.MY_BOOK_SCREEN
 
@@ -19,6 +20,7 @@ sealed class Route (
 
     // Screen
     data object OnBoardingScreen: Route(route = ON_BOARDING_SCREEN)
+    data object HomeScreen: Route(route = HOME_SCREEN)
     data object CategoryScreen: Route(route = CATEGORY_SCREEN)
     data object SearchScreen: Route(route = SEARCH_SCREEN)
     data object MyBookScreen: Route(route = MY_BOOK_SCREEN)

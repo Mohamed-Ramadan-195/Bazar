@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.details
+package com.example.bazar.presentation.screen.details.viewmodel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bazar.domain.model.Item
 import com.example.bazar.domain.usecase.book.base.BooksUseCases
+import com.example.bazar.presentation.screen.details.view.DetailsEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

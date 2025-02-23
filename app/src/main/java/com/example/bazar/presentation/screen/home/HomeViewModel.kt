@@ -5,10 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bazar.domain.usecase.book.base.BooksUseCases
-import com.example.bazar.presentation.screen.category.state.SubjectState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,38 +13,28 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor (
     private val booksUseCases: BooksUseCases
 ) : ViewModel() {
-    private var _state = mutableStateOf(SubjectState())
-    val state : State<SubjectState> = _state
 
     init {
-        getRandomBooks("intitle:${generateRandomTitle()}")
+        getBooksByCategory("subject:Programming")
+        getBooksByCategory("subject:Education")
     }
 
-    private fun generateRandomTitle() : String {
-        val titles = listOf(
-            "the", "flowers",
-            "api", "family",
-            "love", "business",
-            "computer", "sport",
-            "fun", "world", "art",
-        )
-        return titles.random()
-    }
+    private var _state = mutableStateOf(BooksState())
+    val state: State<BooksState> = _state
 
-    private fun getRandomBooks(title: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            booksUseCases.getBooksByTitleUseCase(title)
-                .catch {
-                    e -> println("Error: ${e.message}")
-                }
-                .collect { books ->
-                    if (books.isEmpty()) {
-                        println("No books found")
-                    } else {
-                        println("Books found")
+    private fun getBooksByCategory (category: String) {
+        viewModelScope.launch {
+            if (category == "subject:Programming") {
+                booksUseCases.getBooksByCategoryUseCase(category)
+                    .collect { books ->
+                        _state.value = _state.value.copy(programmingBooks = books)
                     }
-                    _state.value = _state.value.copy(subjects = books)
-                }
+            } else if (category == "subject:Education") {
+                booksUseCases.getBooksByCategoryUseCase(category)
+                    .collect { books ->
+                        _state.value = _state.value.copy(educationBooks = books)
+                    }
+            }
         }
     }
 }

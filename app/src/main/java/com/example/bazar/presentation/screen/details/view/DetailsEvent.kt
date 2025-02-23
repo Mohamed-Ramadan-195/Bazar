@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.details
+package com.example.bazar.presentation.screen.details.view
 
 import com.example.bazar.domain.model.Item
 

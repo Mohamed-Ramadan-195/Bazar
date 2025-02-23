@@ -1,11 +1,11 @@
 package com.example.bazar.presentation.navigation.navgraph
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -24,29 +24,36 @@ import com.example.bazar.presentation.navigation.bottomnavigaion.BazarBottomNavi
 import com.example.bazar.presentation.navigation.bottomnavigaion.BottomNavigationItem
 import com.example.bazar.presentation.screen.my_book.MyBookScreen
 import com.example.bazar.presentation.screen.category.view.CategoryScreen
-import com.example.bazar.presentation.screen.category.viewmodel.CategoryViewModel
-import com.example.bazar.presentation.screen.details.DetailsEvent
-import com.example.bazar.presentation.screen.details.DetailsScreen
-import com.example.bazar.presentation.screen.details.DetailsViewModel
-import com.example.bazar.presentation.screen.my_book.MyBookViewModel
+import com.example.bazar.presentation.screen.details.view.DetailsEvent
+import com.example.bazar.presentation.screen.details.view.DetailsScreen
+import com.example.bazar.presentation.screen.details.viewmodel.DetailsViewModel
+import com.example.bazar.presentation.screen.home.HomeScreen
 import com.example.bazar.presentation.screen.search.view.SearchScreen
-import com.example.bazar.presentation.screen.search.viewmodel.SearchViewModel
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun BazarNavigation () {
     val bottomNavigationItemData = remember {
         listOf (
             BottomNavigationItem (
-                icon = R.drawable.ic_category,
-                address = "Category"
+                icon = R.drawable.icon_home,
+                iconFocused = R.drawable.icon_home_focused,
+                label = "Home"
             ),
             BottomNavigationItem (
-                icon = R.drawable.ic_search,
-                address = "Search"
+                icon = R.drawable.icon_category,
+                iconFocused = R.drawable.icon_category_focused,
+                label = "Category"
             ),
             BottomNavigationItem (
-                icon = R.drawable.favourite_book,
-                address = "My Book"
+                icon = R.drawable.icon_search,
+                iconFocused = R.drawable.icon_search,
+                label = "Search"
+            ),
+            BottomNavigationItem (
+                icon = R.drawable.icon_bookmark,
+                iconFocused = R.drawable.icon_bookmark_focused,
+                label = "Bookmark"
             )
         )
     }
@@ -57,14 +64,16 @@ fun BazarNavigation () {
 
     selectedItem = remember(key1 = navBackStackEntry) {
         when (navBackStackEntry?.destination?.route) {
-            Route.CategoryScreen.route -> 0
-            Route.SearchScreen.route -> 1
-            Route.MyBookScreen.route -> 2
+            Route.HomeScreen.route -> 0
+            Route.CategoryScreen.route -> 1
+            Route.SearchScreen.route -> 2
+            Route.MyBookScreen.route -> 3
             else -> 0
         }
     }
 
     val isBottomBarVisible = remember(key1 = navBackStackEntry) {
+        navBackStackEntry?.destination?.route == Route.HomeScreen.route ||
         navBackStackEntry?.destination?.route == Route.CategoryScreen.route ||
         navBackStackEntry?.destination?.route == Route.SearchScreen.route ||
         navBackStackEntry?.destination?.route == Route.MyBookScreen.route
@@ -81,15 +90,20 @@ fun BazarNavigation () {
                         when (index) {
                             0 -> navigateToTap (
                                 navController = navController,
-                                route = Route.CategoryScreen.route
+                                route = Route.HomeScreen.route
                             )
 
                             1 -> navigateToTap (
                                 navController = navController,
-                                route = Route.SearchScreen.route
+                                route = Route.CategoryScreen.route
                             )
 
                             2 -> navigateToTap (
+                                navController = navController,
+                                route = Route.SearchScreen.route
+                            )
+
+                            3 -> navigateToTap (
                                 navController = navController,
                                 route = Route.MyBookScreen.route
                             )
@@ -99,37 +113,30 @@ fun BazarNavigation () {
             }
         }
     ) {
-        val bottomPadding = it.calculateBottomPadding()
         NavHost (
             navController = navController,
-            startDestination = Route.CategoryScreen.route,
-            modifier = Modifier.padding(bottom = bottomPadding)
+            startDestination = Route.HomeScreen.route,
+            modifier = Modifier.padding()
         ) {
+            composable (route = Route.HomeScreen.route) {
+                HomeScreen(
+                    navigateToSearch = { navigateToTap(navController, Route.SearchScreen.route) },
+                    navigateToCategory = { navigateToTap(navController, Route.CategoryScreen.route) },
+                    navigateToDetails = { item -> navigateToDetails(navController, item) }
+                )
+            }
             composable (route = Route.CategoryScreen.route) {
-                val categoryViewModel: CategoryViewModel = hiltViewModel()
-                val categoryState by categoryViewModel.categoryState.collectAsState()
-                val subjectState by categoryViewModel.subjectState
                 CategoryScreen (
-                    categoryState = categoryState,
-                    onClickCategory = { category -> categoryViewModel.onCategoryClick(category) },
-                    books = subjectState.subjects,
                     navigateToDetails = { item -> navigateToDetails(navController, item) }
                 )
             }
             composable (route = Route.SearchScreen.route) {
-                val searchViewModel: SearchViewModel = hiltViewModel()
-                val searchState = searchViewModel.searchState.value
                 SearchScreen (
-                    searchState = searchState,
-                    searchEvent = searchViewModel::onEvent,
                     navigateToDetails = { item -> navigateToDetails(navController, item) }
                 )
             }
             composable (route = Route.MyBookScreen.route) {
-                val myBookViewModel: MyBookViewModel = hiltViewModel()
-                val state = myBookViewModel.state.value
                 MyBookScreen (
-                    myBookState = state,
                     navigateToDetails = { item -> navigateToDetails(navController, item) }
                 )
             }

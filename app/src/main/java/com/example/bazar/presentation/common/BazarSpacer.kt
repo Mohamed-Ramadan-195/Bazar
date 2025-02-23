@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 
 @Composable
-fun BazarSpacerHeight (height: Dp) = Spacer(modifier = Modifier.height(height))
+fun SpacerHeight (height: Dp) = Spacer(modifier = Modifier.height(height))
 
 @Composable
-fun BazarSpacerWidth (width: Dp) = Spacer(modifier = Modifier.width(width))
+fun SpacerWidth (width: Dp) = Spacer(modifier = Modifier.width(width))

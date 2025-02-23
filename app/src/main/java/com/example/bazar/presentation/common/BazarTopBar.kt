@@ -33,7 +33,7 @@ fun BazarTopBar (
                 onClick = onBackClick
             ) {
                 Icon (
-                    painter = painterResource(id = R.drawable.ic_arrow_back),
+                    painter = painterResource(id = R.drawable.icon_arrow_back),
                     contentDescription = "back"
                 )
             }
@@ -43,7 +43,7 @@ fun BazarTopBar (
                 onClick = onBookmarkClick
             ) {
                 Icon (
-                    painter = painterResource(id = R.drawable.ic_book),
+                    painter = painterResource(id = R.drawable.icon_bookmark),
                     contentDescription = "bookmark"
                 )
             }

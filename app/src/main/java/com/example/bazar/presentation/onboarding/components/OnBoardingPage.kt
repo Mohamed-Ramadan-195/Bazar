@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bazar.R
-import com.example.bazar.presentation.common.BazarSpacerHeight
+import com.example.bazar.presentation.common.SpacerHeight
 import com.example.bazar.presentation.onboarding.model.Page
 import com.example.bazar.util.Dimen.SmallSpace
 
@@ -39,7 +39,7 @@ fun OnBoardingPage (
             contentDescription = "on boarding image",
             contentScale = ContentScale.Crop
         )
-        BazarSpacerHeight(24.dp)
+        SpacerHeight(24.dp)
         Text (
             modifier = Modifier.padding(start = SmallSpace),
             text = page.title,
@@ -48,7 +48,7 @@ fun OnBoardingPage (
             textAlign = TextAlign.Center,
             color = colorResource(R.color.primary_text)
         )
-        BazarSpacerHeight(12.dp)
+        SpacerHeight(12.dp)
         Text (
             modifier = Modifier.padding(start = SmallSpace),
             text = page.body,
@@ -57,7 +57,7 @@ fun OnBoardingPage (
             textAlign = TextAlign.Center,
             color = colorResource(R.color.secondary_text)
         )
-        BazarSpacerHeight(24.dp)
+        SpacerHeight(24.dp)
     }
 }
 

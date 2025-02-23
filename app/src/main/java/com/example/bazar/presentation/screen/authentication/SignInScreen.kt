@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -22,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -33,8 +30,8 @@ import androidx.compose.ui.unit.sp
 import com.example.bazar.R
 import com.example.bazar.presentation.common.BazarButton
 import com.example.bazar.presentation.common.BazarIconButton
-import com.example.bazar.presentation.common.BazarSpacerHeight
-import com.example.bazar.presentation.common.BazarSpacerWidth
+import com.example.bazar.presentation.common.SpacerHeight
+import com.example.bazar.presentation.common.SpacerWidth
 import com.example.bazar.presentation.common.BazarTextHeadline
 import com.example.bazar.util.Dimen.ExtraLargeSpace
 import com.example.bazar.util.Dimen.ExtraSmallSpace
@@ -54,28 +51,28 @@ fun SignInContent () {
             .fillMaxSize()
             .padding(horizontal = MediumSpace)
     ) {
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         BazarIconButton (
-            icon = R.drawable.ic_arrow_back,
+            icon = R.drawable.icon_arrow_back,
             onClick = { TODO() }
         )
-        BazarSpacerHeight(8.dp)
+        SpacerHeight(8.dp)
         BazarTextHeadline (text = "Welcome Back👋")
-        BazarSpacerHeight(8.dp)
+        SpacerHeight(8.dp)
         Text (
             text = "Sign to your account",
             fontSize = 16.sp,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.secondary_text)
         )
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         Text (
             text = "Email",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = colorResource(R.color.primary_text)
         )
-        BazarSpacerHeight(ExtraSmallSpace)
+        SpacerHeight(ExtraSmallSpace)
         OutlinedTextField (
             modifier = Modifier.fillMaxWidth().background(Color(0xFFF9F9F9)),
             value = "",
@@ -88,14 +85,14 @@ fun SignInContent () {
                 fontWeight = FontWeight.Normal,
             )
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text (
             text = "Password",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = colorResource(R.color.primary_text)
         )
-        BazarSpacerHeight(ExtraSmallSpace)
+        SpacerHeight(ExtraSmallSpace)
         OutlinedTextField (
             modifier = Modifier.fillMaxWidth().background(Color(0xFFF9F9F9)),
             value = "",
@@ -108,10 +105,10 @@ fun SignInContent () {
                 fontWeight = FontWeight.Normal,
             ),
             trailingIcon = {
-                BazarIconButton (
-                    icon = R.drawable.password_seen,
-                    onClick = { TODO() }
-                )
+//                BazarIconButton (
+//                    icon = R.drawable.password_seen,
+//                    onClick = {  }
+//                )
             },
             visualTransformation = PasswordVisualTransformation(),
             colors = TextFieldDefaults.colors (
@@ -119,19 +116,19 @@ fun SignInContent () {
                 unfocusedContainerColor = Color(0xFFFAFAFA),
             )
         )
-        BazarSpacerHeight(LargeSpace)
+        SpacerHeight(LargeSpace)
         Text (
             text = "Forgot Password?",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = colorResource(R.color.primary_color)
         )
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         BazarButton (
             text = "Login",
             onClick = { TODO() }
         )
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         Row (
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
@@ -143,7 +140,7 @@ fun SignInContent () {
                 fontWeight = FontWeight.Normal,
                 color = colorResource(R.color.secondary_text)
             )
-            BazarSpacerWidth(ExtraSmallSpace)
+            SpacerWidth(ExtraSmallSpace)
             Text (
                 text = "Sign Up",
                 fontSize = 16.sp,
@@ -151,14 +148,14 @@ fun SignInContent () {
                 color = colorResource(R.color.primary_color)
             )
         }
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         Text (
             modifier = Modifier.align(Alignment.CenterHorizontally),
             text = "Or with",
             fontSize = 16.sp,
             fontWeight = FontWeight.Normal
         )
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         Button (
             modifier = Modifier.fillMaxWidth(),
             onClick = { TODO() },
@@ -167,13 +164,13 @@ fun SignInContent () {
             contentPadding = PaddingValues(14.dp),
             border = BorderStroke(1.dp, Color.Gray)
         ) {
-            Icon (
-                modifier = Modifier.size(LargeSpace),
-                painter = painterResource(R.drawable.ic_google),
-                contentDescription = "Google",
-                tint = Color.Unspecified
-            )
-            BazarSpacerWidth(MediumSpace)
+//            Icon (
+//                modifier = Modifier.size(LargeSpace),
+//                painter = painterResource(R.drawable.ic_google),
+//                contentDescription = "Google",
+//                tint = Color.Unspecified
+//            )
+            SpacerWidth(MediumSpace)
             Text (
                 text = "Sign in with Google",
                 fontSize = 16.sp,

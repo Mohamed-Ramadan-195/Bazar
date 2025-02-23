@@ -8,12 +8,25 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.bazar.domain.model.Item
 import com.example.bazar.presentation.common.BazarBookItem
-import com.example.bazar.presentation.common.BazarSpacerHeight
+import com.example.bazar.presentation.common.SpacerHeight
 import com.example.bazar.presentation.common.BazarTextHeadline
-import com.example.bazar.presentation.common.EmptyScreen
 import com.example.bazar.util.Dimen.MediumSpace
+
+@Composable
+fun MyBookScreen (
+    navigateToDetails: (Item) -> Unit
+) {
+    val myBookViewModel: MyBookViewModel = hiltViewModel()
+    val state = myBookViewModel.state.value
+
+    MyBookScreen (
+        myBookState = state,
+        navigateToDetails = navigateToDetails
+    )
+}
 
 @Composable
 fun MyBookScreen (
@@ -26,10 +39,9 @@ fun MyBookScreen (
             .padding(MediumSpace)
             .statusBarsPadding()
     ) {
-        if (myBookState.books.isEmpty()) EmptyScreen()
-        BazarSpacerHeight(MediumSpace)
+        SpacerHeight(MediumSpace)
         BazarTextHeadline("My Books")
-        BazarSpacerHeight(MediumSpace)
+        SpacerHeight(MediumSpace)
         LazyVerticalGrid (
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxSize()

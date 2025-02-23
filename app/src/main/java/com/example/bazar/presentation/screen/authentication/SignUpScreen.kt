@@ -26,13 +26,11 @@ import androidx.compose.ui.unit.sp
 import com.example.bazar.R
 import com.example.bazar.presentation.common.BazarButton
 import com.example.bazar.presentation.common.BazarIconButton
-import com.example.bazar.presentation.common.BazarSpacerHeight
-import com.example.bazar.presentation.common.BazarSpacerWidth
+import com.example.bazar.presentation.common.SpacerHeight
+import com.example.bazar.presentation.common.SpacerWidth
 import com.example.bazar.presentation.common.BazarTextHeadline
 import com.example.bazar.util.Dimen.ExtraLargeSpace
 import com.example.bazar.util.Dimen.ExtraSmallSpace
-import com.example.bazar.util.Dimen.LargeSpace
-import com.example.bazar.util.Dimen.MediumSpace
 import com.example.bazar.util.Dimen.SmallSpace
 
 @Composable
@@ -45,28 +43,28 @@ fun SignUpContent() {
     Column (
         modifier = Modifier.fillMaxSize().padding(16.dp)
     ) {
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         BazarIconButton (
-            icon = R.drawable.ic_arrow_back,
+            icon = R.drawable.icon_arrow_back,
             onClick = { TODO() }
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         BazarTextHeadline (text = "Sign Up")
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text (
             text = "Create account and choose favorite name",
             fontSize = 16.sp,
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.secondary_text)
         )
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         Text (
             text = "Name",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = colorResource(R.color.primary_text)
         )
-        BazarSpacerHeight(ExtraSmallSpace)
+        SpacerHeight(ExtraSmallSpace)
         OutlinedTextField (
             modifier = Modifier.fillMaxWidth().background(Color(0xFFF9F9F9)),
             value = "",
@@ -79,14 +77,14 @@ fun SignUpContent() {
                 fontWeight = FontWeight.Normal,
             )
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text (
             text = "Email",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = colorResource(R.color.primary_text)
         )
-        BazarSpacerHeight(ExtraSmallSpace)
+        SpacerHeight(ExtraSmallSpace)
         OutlinedTextField (
             modifier = Modifier.fillMaxWidth().background(Color(0xFFF9F9F9)),
             value = "",
@@ -99,14 +97,14 @@ fun SignUpContent() {
                 fontWeight = FontWeight.Normal,
             )
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text (
             text = "Password",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = colorResource(R.color.primary_text)
         )
-        BazarSpacerHeight(ExtraSmallSpace)
+        SpacerHeight(ExtraSmallSpace)
         OutlinedTextField (
             modifier = Modifier.fillMaxWidth().background(Color(0xFFF9F9F9)),
             value = "",
@@ -119,10 +117,10 @@ fun SignUpContent() {
                 fontWeight = FontWeight.Normal,
             ),
             trailingIcon = {
-                BazarIconButton (
-                    icon = R.drawable.password_seen,
-                    onClick = { TODO() }
-                )
+//                BazarIconButton (
+//                    icon = R.drawable.password_seen,
+//                    onClick = {  }
+//                )
             },
             visualTransformation = PasswordVisualTransformation(),
             colors = TextFieldDefaults.colors (
@@ -130,12 +128,12 @@ fun SignUpContent() {
                 unfocusedContainerColor = Color(0xFFFAFAFA),
             )
         )
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         BazarButton (
             text = "Register",
             onClick = { TODO() }
         )
-        BazarSpacerHeight(ExtraLargeSpace)
+        SpacerHeight(ExtraLargeSpace)
         Row (
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
@@ -147,7 +145,7 @@ fun SignUpContent() {
                 fontWeight = FontWeight.Normal,
                 color = colorResource(R.color.secondary_text)
             )
-            BazarSpacerWidth(ExtraSmallSpace)
+            SpacerWidth(ExtraSmallSpace)
             Text (
                 text = "Sign In",
                 fontSize = 16.sp,

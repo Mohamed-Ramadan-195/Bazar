@@ -45,13 +45,11 @@ fun BazarBookItem (
             model = ImageRequest.Builder(context = LocalContext.current)
                 .data(item.volumeInfo.imageLinks.smallThumbnail)
                 .crossfade(true)
-                .placeholder(R.drawable.book)
-                .error(R.drawable.error)
                 .build(),
             contentDescription = "cover",
             contentScale = ContentScale.FillWidth
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text (
             modifier = Modifier.padding(horizontal = ExtraSmallSpace),
             text = item.volumeInfo.title,
@@ -60,6 +58,6 @@ fun BazarBookItem (
             fontWeight = FontWeight.Normal,
             color = Color(R.color.secondary_text)
         )
-        BazarSpacerHeight(MediumSpace)
+        SpacerHeight(MediumSpace)
     }
 }

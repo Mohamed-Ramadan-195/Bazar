@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.details
+package com.example.bazar.presentation.screen.details.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +23,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.bazar.R
 import com.example.bazar.domain.model.Item
-import com.example.bazar.presentation.common.BazarSpacerHeight
+import com.example.bazar.presentation.common.SpacerHeight
 import com.example.bazar.presentation.common.BazarTopBar
 import com.example.bazar.util.Dimen.MediumSpace
 import com.example.bazar.util.Dimen.SmallSpace
@@ -56,13 +56,11 @@ fun DetailsScreen (
                 .clip(MaterialTheme.shapes.medium),
             model = ImageRequest.Builder(context = context)
                 .data(item.volumeInfo.imageLinks.smallThumbnail)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.error)
                 .build(),
             contentDescription = "cover",
             contentScale = ContentScale.FillWidth
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text (
             text = item.volumeInfo.title,
             fontSize = 20.sp,
@@ -75,7 +73,7 @@ fun DetailsScreen (
             fontWeight = FontWeight.SemiBold,
             color = colorResource(R.color.secondary_text)
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text(
             text = "Authors",
             fontSize = 16.sp,
@@ -88,7 +86,7 @@ fun DetailsScreen (
             fontWeight = FontWeight.Normal,
             color = colorResource(R.color.secondary_text)
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text(
             text = "Description",
             fontSize = 16.sp,
@@ -102,7 +100,7 @@ fun DetailsScreen (
             maxLines = 5,
             color = colorResource(R.color.secondary_text)
         )
-        BazarSpacerHeight(SmallSpace)
+        SpacerHeight(SmallSpace)
         Text(
             text = "Publisher",
             fontSize = 16.sp,
