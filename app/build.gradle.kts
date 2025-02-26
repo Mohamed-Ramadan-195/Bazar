@@ -99,4 +99,7 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
+
+    // Lottie Animation
+    implementation(libs.lottie.compose)
 }

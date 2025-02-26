@@ -22,7 +22,7 @@ import com.example.bazar.R
 import com.example.bazar.domain.model.Item
 import com.example.bazar.presentation.navigation.bottomnavigaion.BazarBottomNavigation
 import com.example.bazar.presentation.navigation.bottomnavigaion.BottomNavigationItem
-import com.example.bazar.presentation.screen.my_book.MyBookScreen
+import com.example.bazar.presentation.screen.bookmark.BookmarkScreen
 import com.example.bazar.presentation.screen.category.view.CategoryScreen
 import com.example.bazar.presentation.screen.details.view.DetailsEvent
 import com.example.bazar.presentation.screen.details.view.DetailsScreen
@@ -136,7 +136,7 @@ fun BazarNavigation () {
                 )
             }
             composable (route = Route.MyBookScreen.route) {
-                MyBookScreen (
+                BookmarkScreen (
                     navigateToDetails = { item -> navigateToDetails(navController, item) }
                 )
             }

@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.my_book
+package com.example.bazar.presentation.screen.bookmark
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,27 +10,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.bazar.domain.model.Item
+import com.example.bazar.R
 import com.example.bazar.presentation.common.BazarBookItem
 import com.example.bazar.presentation.common.SpacerHeight
 import com.example.bazar.presentation.common.BazarTextHeadline
+import com.example.bazar.presentation.common.EmptyScreen
 import com.example.bazar.util.Dimen.MediumSpace
 
 @Composable
-fun MyBookScreen (
+fun BookmarkScreen (
     navigateToDetails: (Item) -> Unit
 ) {
-    val myBookViewModel: MyBookViewModel = hiltViewModel()
-    val state = myBookViewModel.state.value
+    val bookmarkViewModel: BookmarkViewModel = hiltViewModel()
+    val state = bookmarkViewModel.state.value
 
-    MyBookScreen (
-        myBookState = state,
+    BookmarkScreenContent (
+        bookmarkState = state,
         navigateToDetails = navigateToDetails
     )
 }
 
 @Composable
-fun MyBookScreen (
-    myBookState: MyBookState,
+fun BookmarkScreenContent (
+    bookmarkState: BookmarkState,
     navigateToDetails: (Item) -> Unit
 ) {
     Column (
@@ -39,17 +41,28 @@ fun MyBookScreen (
             .padding(MediumSpace)
             .statusBarsPadding()
     ) {
+        // No bookmarked books
+        if (bookmarkState.books.isEmpty()) {
+            EmptyScreen (
+                raw = R.raw.bookmark,
+                title = "No bookmarked books",
+                subtitle = "You haven't bookmarked any books yet"
+            )
+        }
+
+        // Display bookmarked books
         SpacerHeight(MediumSpace)
-        BazarTextHeadline("My Books")
+        BazarTextHeadline("Bookmark")
         SpacerHeight(MediumSpace)
+
         LazyVerticalGrid (
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxSize()
         ) {
-            items(count = myBookState.books.size) { item ->
+            items(count = bookmarkState.books.size) { item ->
                 BazarBookItem (
-                    item = myBookState.books[item],
-                    onClick = { navigateToDetails(myBookState.books[item]) }
+                    item = bookmarkState.books[item],
+                    onClick = { navigateToDetails(bookmarkState.books[item]) }
                 )
             }
         }
