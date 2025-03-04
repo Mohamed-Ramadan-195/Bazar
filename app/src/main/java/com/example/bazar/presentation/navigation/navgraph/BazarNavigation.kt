@@ -121,7 +121,6 @@ fun BazarNavigation () {
             composable (route = Route.HomeScreen.route) {
                 HomeScreen(
                     navigateToSearch = { navigateToTap(navController, Route.SearchScreen.route) },
-                    navigateToCategory = { navigateToTap(navController, Route.CategoryScreen.route) },
                     navigateToDetails = { item -> navigateToDetails(navController, item) }
                 )
             }
