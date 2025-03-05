@@ -32,9 +32,9 @@ class BazarRepositoryImpl (
 
     override suspend fun insertBook(item: Item) = bazarDao.insertItem(item)
 
-    override suspend fun deleteBook(item: Item) = bazarDao.insertItem(item)
+    override suspend fun deleteBook(item: Item) = bazarDao.deleteItem(item)
 
-    override fun getBooksBookmarked(): Flow<List<Item>> = bazarDao.getBooksBookmarked()
+    override fun getBooksFavorite(): Flow<List<Item>> = bazarDao.getBooksFavorite()
 
     override suspend fun getBookDetails(id: String): Item = bazarDao.getBookDetails(id)
 }

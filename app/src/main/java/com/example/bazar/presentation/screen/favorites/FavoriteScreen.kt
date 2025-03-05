@@ -1,11 +1,13 @@
 package com.example.bazar.presentation.screen.favorites
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -15,6 +17,8 @@ import com.example.bazar.presentation.common.BazarBookItem
 import com.example.bazar.presentation.common.SpacerHeight
 import com.example.bazar.presentation.common.BazarTextHeadline
 import com.example.bazar.presentation.common.EmptyScreen
+import com.example.bazar.util.Dimen.ExtraSmallSpace
+import com.example.bazar.util.Dimen.LargeSpace
 import com.example.bazar.util.Dimen.MediumSpace
 
 @Composable
@@ -38,8 +42,8 @@ fun FavoriteScreenContent (
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .padding(MediumSpace)
             .statusBarsPadding()
+            .padding(MediumSpace)
     ) {
         // No Favorites books
         if (favoriteState.books.isEmpty()) {
@@ -54,10 +58,11 @@ fun FavoriteScreenContent (
         SpacerHeight(MediumSpace)
         BazarTextHeadline("Favorites")
         SpacerHeight(MediumSpace)
-
-        LazyVerticalGrid (
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.fillMaxSize()
+        LazyVerticalStaggeredGrid (
+            columns = StaggeredGridCells.Fixed(2),
+            modifier = Modifier.fillMaxSize().fillMaxWidth(),
+            contentPadding = PaddingValues(ExtraSmallSpace),
+            verticalItemSpacing = LargeSpace
         ) {
             items(count = favoriteState.books.size) { item ->
                 BazarBookItem (

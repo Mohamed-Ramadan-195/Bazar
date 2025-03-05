@@ -12,10 +12,9 @@ import com.example.bazar.domain.repository.BazarRepository
 import com.example.bazar.domain.usecase.book.base.BooksUseCases
 import com.example.bazar.domain.usecase.book.local.DeleteBookUseCase
 import com.example.bazar.domain.usecase.book.local.GetBookDetailsUseCase
-import com.example.bazar.domain.usecase.book.local.GetBooksBookmarkedUseCase
+import com.example.bazar.domain.usecase.book.local.GetBooksFavoriteUseCase
 import com.example.bazar.domain.usecase.book.remote.GetBooksByCategoryUseCase
 import com.example.bazar.domain.usecase.book.local.InsertBookUseCase
-import com.example.bazar.domain.usecase.book.remote.GetBooksByTitleUseCase
 import com.example.bazar.domain.usecase.book.remote.SearchBooksUseCase
 import com.example.bazar.domain.usecase.start.AppEntryUseCases
 import com.example.bazar.domain.usecase.start.ReadAppEntryUseCase
@@ -59,9 +58,8 @@ object AppModule {
             searchBooksUseCase = SearchBooksUseCase(bazarRepository),
             insertBookUseCase = InsertBookUseCase(bazarRepository),
             deleteBookUseCase = DeleteBookUseCase(bazarRepository),
-            getBooksBookmarkedUseCase = GetBooksBookmarkedUseCase(bazarRepository),
-            getBookDetailsUseCase = GetBookDetailsUseCase(bazarRepository),
-            getBooksByTitleUseCase = GetBooksByTitleUseCase(bazarRepository)
+            getBooksFavoriteUseCase = GetBooksFavoriteUseCase(bazarRepository),
+            getBookDetailsUseCase = GetBookDetailsUseCase(bazarRepository)
         )
     }
 

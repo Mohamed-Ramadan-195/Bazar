@@ -17,7 +17,7 @@ interface BazarDao {
     suspend fun deleteItem(item: Item)
 
     @Query("SELECT * FROM Item")
-    fun getBooksBookmarked(): Flow<List<Item>>
+    fun getBooksFavorite(): Flow<List<Item>>
 
     @Query("SELECT * FROM Item WHERE id=:id")
     suspend fun getBookDetails(id: String): Item

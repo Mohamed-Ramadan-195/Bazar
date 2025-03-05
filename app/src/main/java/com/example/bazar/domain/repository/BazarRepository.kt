@@ -12,7 +12,7 @@ interface BazarRepository {
 
     suspend fun deleteBook(item: Item)
 
-    fun getBooksBookmarked(): Flow<List<Item>>
+    fun getBooksFavorite(): Flow<List<Item>>
 
-    suspend fun getBookDetails(id: String): Item
+    suspend fun getBookDetails(id: String): Item?
 }
