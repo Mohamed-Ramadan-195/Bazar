@@ -1,7 +1,7 @@
-package com.example.bazar.presentation.screen.bookmark
+package com.example.bazar.presentation.screen.favorites
 
 import com.example.bazar.domain.model.Item
 
-data class BookmarkState (
+data class FavoriteState (
     val books: List<Item> = emptyList()
 )

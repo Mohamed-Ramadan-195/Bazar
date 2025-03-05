@@ -7,11 +7,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -20,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.bazar.R
 import com.example.bazar.domain.model.Item
+import com.example.bazar.ui.theme.SecondaryColor
 import com.example.bazar.util.Dimen.ExtraSmallSpace
 import com.example.bazar.util.Dimen.MediumSpace
 import com.example.bazar.util.Dimen.SmallSpace
@@ -41,7 +42,7 @@ fun BazarBookItem (
         verticalArrangement = Arrangement.Center
     ) {
         AsyncImage (
-            modifier = modifier.size(150.dp),
+            modifier = modifier.size(150.dp).clip(RoundedCornerShape(SmallSpace)),
             model = ImageRequest.Builder(context = LocalContext.current)
                 .data(item.volumeInfo.imageLinks.smallThumbnail)
                 .crossfade(true)
@@ -56,7 +57,7 @@ fun BazarBookItem (
             textAlign = TextAlign.Center,
             fontSize = 18.sp,
             fontWeight = FontWeight.Normal,
-            color = Color(R.color.secondary_text)
+            color = SecondaryColor
         )
         SpacerHeight(MediumSpace)
     }

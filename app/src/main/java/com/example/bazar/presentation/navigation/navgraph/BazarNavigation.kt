@@ -22,7 +22,7 @@ import com.example.bazar.R
 import com.example.bazar.domain.model.Item
 import com.example.bazar.presentation.navigation.bottomnavigaion.BazarBottomNavigation
 import com.example.bazar.presentation.navigation.bottomnavigaion.BottomNavigationItem
-import com.example.bazar.presentation.screen.bookmark.BookmarkScreen
+import com.example.bazar.presentation.screen.favorites.FavoriteScreen
 import com.example.bazar.presentation.screen.category.view.CategoryScreen
 import com.example.bazar.presentation.screen.details.view.DetailsEvent
 import com.example.bazar.presentation.screen.details.view.DetailsScreen
@@ -51,9 +51,9 @@ fun BazarNavigation () {
                 label = "Search"
             ),
             BottomNavigationItem (
-                icon = R.drawable.icon_bookmark,
-                iconFocused = R.drawable.icon_bookmark_focused,
-                label = "Bookmark"
+                icon = R.drawable.ic_favorite,
+                iconFocused = R.drawable.ic_favorite_focused,
+                label = "Favorite"
             )
         )
     }
@@ -67,7 +67,7 @@ fun BazarNavigation () {
             Route.HomeScreen.route -> 0
             Route.CategoryScreen.route -> 1
             Route.SearchScreen.route -> 2
-            Route.MyBookScreen.route -> 3
+            Route.FavoriteScreen.route -> 3
             else -> 0
         }
     }
@@ -76,7 +76,7 @@ fun BazarNavigation () {
         navBackStackEntry?.destination?.route == Route.HomeScreen.route ||
         navBackStackEntry?.destination?.route == Route.CategoryScreen.route ||
         navBackStackEntry?.destination?.route == Route.SearchScreen.route ||
-        navBackStackEntry?.destination?.route == Route.MyBookScreen.route
+        navBackStackEntry?.destination?.route == Route.FavoriteScreen.route
     }
 
     Scaffold (
@@ -105,7 +105,7 @@ fun BazarNavigation () {
 
                             3 -> navigateToTap (
                                 navController = navController,
-                                route = Route.MyBookScreen.route
+                                route = Route.FavoriteScreen.route
                             )
                         }
                     }
@@ -134,8 +134,8 @@ fun BazarNavigation () {
                     navigateToDetails = { item -> navigateToDetails(navController, item) }
                 )
             }
-            composable (route = Route.MyBookScreen.route) {
-                BookmarkScreen (
+            composable (route = Route.FavoriteScreen.route) {
+                FavoriteScreen (
                     navigateToDetails = { item -> navigateToDetails(navController, item) }
                 )
             }

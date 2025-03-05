@@ -34,7 +34,6 @@ class CategoryViewModel @Inject constructor (
             it.copy(
                 categories = listOf(
                     Category("Programming", true),
-                    Category("Education"),
                     Category("Language"),
                     Category("Law"),
                     Category("Business & Economics"),

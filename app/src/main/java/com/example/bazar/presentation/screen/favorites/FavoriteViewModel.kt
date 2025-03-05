@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.bookmark
+package com.example.bazar.presentation.screen.favorites
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -12,11 +12,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class BookmarkViewModel @Inject constructor (
+class FavoriteViewModel @Inject constructor (
     private val booksUseCases: BooksUseCases
 ) : ViewModel() {
-    private val _state = mutableStateOf(BookmarkState())
-    val state : State<BookmarkState> = _state
+    private val _state = mutableStateOf(FavoriteState())
+    val state : State<FavoriteState> = _state
 
     init {
         getBooksBookmarked()

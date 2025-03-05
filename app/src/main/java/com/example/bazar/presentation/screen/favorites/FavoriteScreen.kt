@@ -1,4 +1,4 @@
-package com.example.bazar.presentation.screen.bookmark
+package com.example.bazar.presentation.screen.favorites
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,21 +18,21 @@ import com.example.bazar.presentation.common.EmptyScreen
 import com.example.bazar.util.Dimen.MediumSpace
 
 @Composable
-fun BookmarkScreen (
+fun FavoriteScreen (
     navigateToDetails: (Item) -> Unit
 ) {
-    val bookmarkViewModel: BookmarkViewModel = hiltViewModel()
-    val state = bookmarkViewModel.state.value
+    val favoriteViewModel: FavoriteViewModel = hiltViewModel()
+    val state = favoriteViewModel.state.value
 
-    BookmarkScreenContent (
-        bookmarkState = state,
+    FavoriteScreenContent (
+        favoriteState = state,
         navigateToDetails = navigateToDetails
     )
 }
 
 @Composable
-fun BookmarkScreenContent (
-    bookmarkState: BookmarkState,
+fun FavoriteScreenContent (
+    favoriteState: FavoriteState,
     navigateToDetails: (Item) -> Unit
 ) {
     Column (
@@ -41,28 +41,28 @@ fun BookmarkScreenContent (
             .padding(MediumSpace)
             .statusBarsPadding()
     ) {
-        // No bookmarked books
-        if (bookmarkState.books.isEmpty()) {
+        // No Favorites books
+        if (favoriteState.books.isEmpty()) {
             EmptyScreen (
-                raw = R.raw.bookmark,
-                title = "No bookmarked books",
-                subtitle = "You haven't bookmarked any books yet"
+                raw = R.raw.favorite,
+                title = "No Favorites books",
+                subtitle = "You haven't favorite any books yet"
             )
         }
 
-        // Display bookmarked books
+        // Display favorites books
         SpacerHeight(MediumSpace)
-        BazarTextHeadline("Bookmark")
+        BazarTextHeadline("Favorites")
         SpacerHeight(MediumSpace)
 
         LazyVerticalGrid (
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxSize()
         ) {
-            items(count = bookmarkState.books.size) { item ->
+            items(count = favoriteState.books.size) { item ->
                 BazarBookItem (
-                    item = bookmarkState.books[item],
-                    onClick = { navigateToDetails(bookmarkState.books[item]) }
+                    item = favoriteState.books[item],
+                    onClick = { navigateToDetails(favoriteState.books[item]) }
                 )
             }
         }

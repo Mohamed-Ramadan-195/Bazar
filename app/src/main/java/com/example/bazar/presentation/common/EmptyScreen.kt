@@ -37,7 +37,6 @@ fun EmptyScreen (
             composition = composition,
             modifier = Modifier.size(250.dp)
         )
-        SpacerHeight(Dimen.MediumSpace)
         Text (
             text = title,
             fontFamily = FontFamily.Serif,
