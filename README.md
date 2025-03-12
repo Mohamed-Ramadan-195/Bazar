@@ -15,12 +15,13 @@
 
 # How does the app work?
 ### 📱  Splash Screen & On-Boarding
-### 📼 Three Tabs ( Category + Search + Bookmark )
+### 📼 Four Tabs ( Home + Category + Search + Bookmark )
 ### 📼 Additional Screen ( Details )
-### 1️⃣ Category : Here you can find the best books by category.
-### 2️⃣ Search : Here you can search for any book you want.
-### 3️⃣ Bookmark : You can save the book here and bookmark it.
-### 4️⃣ Details : Here it displays book details such as description.
+### 1️⃣ Home : This is where books are presented to you in an entertaining way.
+### 2️⃣ Category : Here you can find the best books by category.
+### 3️⃣ Search : Here you can search for any book you want.
+### 4️⃣ Bookmark : You can save the book here and bookmark it.
+### 5️⃣ Details : Here it displays book details such as description.
 
 # How to install this app ?
 Just copy this url ``` https://github.com/Mohamed-Ramadan-195/Bazar ``` and clone it in your android studio.
